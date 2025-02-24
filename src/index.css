@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes rotate3d {
+  0% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  50% {
+    transform: rotateY(180deg) rotateX(15deg);
+  }
+  100% {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+}
+
+.btn-gradient {
+  @apply px-6 py-2 rounded-lg font-semibold text-white shadow-md transition-all;
+  background: linear-gradient(
+    to right,
+    theme("colors.btnGradientFrom"),
+    theme("colors.btnGradientTo")
+  );
+}
+
+.btn-orange {
+  @apply px-6 py-2 rounded-lg font-semibold text-white shadow-md transition-all;
+  background: linear-gradient(
+    to right,
+    theme("colors.btnOrangeFrom"),
+    theme("colors.btnOrangeTo")
+  );
+}
+
+.btn-gradient:hover,
+.btn-orange:hover {
+  @apply hover:shadow-lg hover:scale-105;
+}
