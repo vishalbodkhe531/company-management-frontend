@@ -18,16 +18,19 @@ function EmpDocuments({ switchDetailes, setToggle }: EmpPropsType) {
     email,
     phoneNumber,
     resignationDate,
+    professionalSummary,
     qualification,
     skill,
     gender,
     address,
     profilePic,
+    project,
     role,
+    achievements,
   } = switchDetailes;
 
   return (
-    <div className="bg-gray-900 min-h-screen py-4 px-4 sm:px-6 lg:px-8 text-gray-100 select-none">
+    <div className="bg-gray-900 min-h-screen py-4 px-4 sm:px-6 lg:px-8 text-gray-100 select-none leading-relaxed tracking-wide font-paraFont">
       <div className="w-full mx-auto bg-gray-800 shadow-md rounded-lg p-6">
         {/* Header */}
         <div className="flex items-center justify-between gap-4 border-b border-red-700 pb-4 mb-6">
@@ -41,7 +44,7 @@ function EmpDocuments({ switchDetailes, setToggle }: EmpPropsType) {
               <h1 className="text-2xl font-bold">
                 {firstName} {lastName}
               </h1>
-              <div className="mt-2">
+              <div className="mt-2 space-y-1">
                 <p>
                   <strong>Email:</strong> {email}
                 </p>
@@ -59,45 +62,46 @@ function EmpDocuments({ switchDetailes, setToggle }: EmpPropsType) {
           </div>
         </div>
 
-        {/* Sections */}
-        <div className="space-y-8 grid grid-cols-1 md:grid-cols-2">
+        {/* Content Sections */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Professional Summary */}
-          <section>
+          <section className="border-b-2 py-3">
             <h3 className="text-lg font-semibold text-gray-100 mb-2">
-              Professional Summary
+              Professional Summary *
             </h3>
-            <p className="text-sm text-gray-300">
-              Results-oriented Software Engineer with 5+ years of experience in
-              full-stack development. Adept at delivering high-quality projects
-              within deadlines. Skilled in React, Node.js, and MongoDB.
-            </p>
+
+            <p className="text-gray-200 w-[90%]">{professionalSummary}</p>
           </section>
 
           {/* Employment Details */}
-          <section>
+          <section className="border-b-2 py-3">
             <h3 className="text-lg font-semibold text-gray-100 mb-2">
-              Employment Details
+              Employment Details *
             </h3>
-            <p className="text-sm text-gray-300">
-              <strong>Current Position:</strong> Software Engineer
-            </p>
-            <p className="text-sm text-gray-300">
-              <strong>Department:</strong> IT
-            </p>
-            <p className="text-sm text-gray-300">
-              <strong>Joining Date:</strong> January 15, 2020
-            </p>
-            <p className="text-sm text-gray-300">
-              <strong>Work Location:</strong> HQ - New York
-            </p>
-            <p className="text-sm text-gray-300">
-              <strong>Reporting Manager:</strong> Jane Smith
-            </p>
+            <div className="text-sm text-gray-300 space-y-1">
+              <p>
+                <strong>Current Position:</strong> Software Engineer
+              </p>
+              <p>
+                <strong>Department:</strong> IT
+              </p>
+              <p>
+                <strong>Joining Date:</strong> January 15, 2020
+              </p>
+              <p>
+                <strong>Work Location:</strong> HQ - New York
+              </p>
+              <p>
+                <strong>Reporting Manager:</strong> Jane Smith
+              </p>
+            </div>
           </section>
 
           {/* Skills */}
-          <section>
-            <h3 className="text-lg font-semibold text-gray-100 mb-2">Skills</h3>
+          <section className="border-b-2 py-3">
+            <h3 className="text-lg font-semibold text-gray-100 mb-2">
+              Skills *
+            </h3>
             <ul className="flex flex-wrap gap-2">
               {[
                 "React",
@@ -118,36 +122,24 @@ function EmpDocuments({ switchDetailes, setToggle }: EmpPropsType) {
           </section>
 
           {/* Projects */}
-          <section>
+          <section className="border-b-2 py-3">
             <h3 className="text-lg font-semibold text-gray-100 mb-2">
-              Projects
+              Projects *
             </h3>
-            <ul className="space-y-4">
-              <li>
-                <h4 className="font-semibold text-gray-100">
-                  E-commerce Platform
-                </h4>
-                <p className="text-sm text-gray-300">
-                  Developed a scalable e-commerce platform using the MERN stack,
-                  resulting in a 35% increase in user engagement.
-                </p>
-              </li>
-              <li>
-                <h4 className="font-semibold text-gray-100">
-                  Employee Management System
-                </h4>
-                <p className="text-sm text-gray-300">
-                  Built an internal tool for managing employee records,
-                  attendance, and performance tracking.
-                </p>
-              </li>
+            <ul className="space-y-4 mt-4">
+              {project.map((item) => (
+                <li key={item.name}>
+                  <h4 className="font-semibold text-gray-100">{item.name}</h4>
+                  <p className="text-sm text-gray-300">{item.description}</p>
+                </li>
+              ))}
             </ul>
           </section>
 
           {/* Education */}
-          <section>
+          <section className="border-b-2 py-3">
             <h3 className="text-lg font-semibold text-gray-100 mb-2">
-              Education
+              Education *
             </h3>
             <ul className="space-y-2">
               <li>
@@ -162,43 +154,27 @@ function EmpDocuments({ switchDetailes, setToggle }: EmpPropsType) {
           </section>
 
           {/* Certifications */}
-          <section>
+          <section className="border-b-2 py-3">
             <h3 className="text-lg font-semibold text-gray-100 mb-2">
-              Certifications
+              Certifications *
             </h3>
-            <ul className="space-y-2">
-              <li className="text-sm text-gray-300">
-                Full-Stack Developer Certification - Udemy
-              </li>
-              <li className="text-sm text-gray-300">
-                Certified Scrum Master (CSM)
-              </li>
+            <ul className="text-sm text-gray-300 space-y-1">
+              <li>{skill}</li>
+              <li>Certified Scrum Master (CSM)</li>
             </ul>
           </section>
 
           {/* Awards and Achievements */}
           <section>
             <h3 className="text-lg font-semibold text-gray-100 mb-2">
-              Awards and Achievements
+              Awards and Achievements *
             </h3>
-            <ul className="space-y-2">
-              <li className="text-sm text-gray-300">
-                Employee of the Month (March 2023)
-              </li>
-              <li className="text-sm text-gray-300">
-                Successfully led a team for Project Alpha, reducing costs by
-                20%.
-              </li>
+            <ul className="text-sm text-gray-300 space-y-1">
+              <li>{achievements}</li>
             </ul>
           </section>
 
           {/* References */}
-          <section>
-            <h3 className="text-lg font-semibold text-gray-100 mb-2">
-              References
-            </h3>
-            <p className="text-sm text-gray-300">Available upon request.</p>
-          </section>
         </div>
       </div>
     </div>

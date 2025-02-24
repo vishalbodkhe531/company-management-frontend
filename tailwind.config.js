@@ -32,6 +32,7 @@ module.exports = {
 
       fontFamily: {
         system: ["system-ui", "-apple-system", "BlinkMacSystemFont"],
+        paraFont: ["Trebuchet MS", "sans-serif"],
       },
 
       lineHeight: {

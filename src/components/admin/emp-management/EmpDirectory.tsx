@@ -3,6 +3,7 @@ import { useState } from "react";
 import EmployeeDocuments from "./EmpDocuments";
 import { Employee } from "@/types/types";
 
+
 const EmployeeDirectory = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filter, setFilter] = useState("All");
@@ -41,12 +42,15 @@ const EmployeeDirectory = () => {
     setToggle(false);
   };
 
+
   return switchDetailes?._id && !toggle ? (
     <EmployeeDocuments switchDetailes={switchDetailes} setToggle={setToggle} />
   ) : (
     <div className="p-6 bg-gray-900 min-h-screen text-gray-200">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-100">Employee Directory</h1>
+        <h1 className="text-3xl font-bold text-gray-100">
+          Employee Directory
+        </h1>
         <p className="text-gray-400">
           Manage employee information and attendance
         </p>
