@@ -70,7 +70,9 @@ function EmpDocuments({ switchDetailes, setToggle }: EmpPropsType) {
               Professional Summary *
             </h3>
 
-            <p className="text-gray-200 w-[90%]">{professionalSummary}</p>
+            <p className="text-gray-200 w-[90%]">
+              {professionalSummary}
+            </p>
           </section>
 
           {/* Employment Details */}

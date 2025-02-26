@@ -37,6 +37,7 @@ import { IoTransgenderOutline } from "react-icons/io5";
 import { MdOutlineAttachEmail } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { FaPlus } from "react-icons/fa6";
 
 const Profile = () => {
   const { employee } = useSelector((state: RootState) => state.empReducers);
@@ -165,7 +166,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-500 p-8 select-none">
+    <div className="min-h-screen bg-gray-500 p-8 select-none font-paraFont">
       <motion.div
         className="max-w-full mx-auto "
         initial={{ opacity: 0, y: 50 }}
@@ -456,41 +457,41 @@ const Profile = () => {
                     <Label className="text-lg font-semibold">
                       Professional Summary
                     </Label>
-                    <div className="w-full h-32 p-4 border rounded-lg bg-gray-100 text-gray-700 overflow-y-clip  shadow-sm">
+                    <div className="w-full h-[100%] p-4 border rounded-lg bg-gray-100 text-gray-700 overflow-y-clip  shadow-sm ">
                       {employee?.professionalSummary ||
                         "No information available"}
                     </div>
                   </div>
                   {/* Employment Details */}
-                  <div className="space-y-2">
+                  <div className="space-y-2 ">
                     <Label className="text-lg font-semibold">
                       Employment Details
                     </Label>
-                    <div className="w-full h-32 p-4 border rounded-lg bg-gray-100 text-gray-700 overflow-y-clip shadow-sm">
+                    <div className="w-full  h-[100%] p-4 border rounded-lg bg-gray-100 text-gray-700 overflow-y-clip shadow-sm">
                       {employee?.employmentDetails ||
                         "No information available"}
                     </div>
                   </div>
                   {/* Education Details */}
-                  <div className="space-y-2">
+                  <div className="space-y-2 mt-10">
                     <Label className="text-lg font-semibold">
                       Education Details
                     </Label>
-                    <div className="w-full h-32 p-4 border rounded-lg bg-gray-100 text-gray-700 overflow-y-clip shadow-sm">
+                    <div className="w-full  h-[100%] p-4 border rounded-lg bg-gray-100 text-gray-700 overflow-y-clip shadow-sm">
                       {employee?.educationDetails || "No information available"}
                     </div>
                   </div>
                   {/* Achievements */}
-                  <div className="space-y-2">
+                  <div className="space-y-2 mt-10">
                     <Label className="text-lg font-semibold">
                       Achievements
                     </Label>
-                    <div className="w-full h-32 p-4 border rounded-lg bg-gray-100 text-gray-700 overflow-y-clip shadow-sm overflow-x-clip">
+                    <div className="w-full  h-[100%] p-4 border rounded-lg bg-gray-100 text-gray-700 overflow-y-clip shadow-sm overflow-x-clip">
                       {employee?.achievements || "No information available"}
                     </div>
                   </div>
                   {/* Projects */}
-                  <div className="space-y-2 col-span-2">
+                  <div className="space-y-2 col-span-2 mt-10">
                     <Label className="text-lg font-semibold">
                       Project Details
                     </Label>
@@ -506,13 +507,6 @@ const Profile = () => {
                         <div>{item.description}</div>
                       </div>
                     ))}
-
-                    {/* <div className="w-full p-4 border rounded-lg bg-gray-100 text-gray-700 overflow-y-auto shadow-sm">
-                      <div className="font-semibold text-xl text-gray-900">
-                        E-Commerce
-                      </div>
-                      <div>No project details available</div>
-                    </div> */}
                   </div>
                 </div>
                 {/* Submit Button */}
@@ -580,7 +574,7 @@ const Profile = () => {
                       ></textarea>
                     </div>
                     {/* Projects */}
-                    <div className="space-y-4 md:col-span-3 ">
+                    <div className="space-y-4 md:col-span-2 ">
                       <Label
                         htmlFor="project"
                         className="text-lg font-semibold"
@@ -588,77 +582,61 @@ const Profile = () => {
                         Project Details
                       </Label>
                       <Separator />
-                      <div className="space-y-4">
-                        {fields.map((item, index) => (
-                          <Card key={item.id} className="p-4 bg-muted">
-                            <CardContent className="grid gap-4 md:grid-cols-2">
-                              <div>
-                                <Label htmlFor={`project.${index}.name`}>
-                                  Project Name
-                                </Label>
-                                <Input
-                                  type="text"
-                                  placeholder="Enter project name"
-                                  {...form.register(`project.${index}.name`)}
-                                />
-                                {/* {form.formState.errors.project?.[index]
-                                  ?.name && (
-                                  <span className="text-destructive text-sm font-medium">
-                                    {
-                                      form.formState.errors.project[index]?.name
-                                        ?.message
-                                    }
-                                  </span>
-                                )} */}
-                              </div>
-                              <div>
-                                <Label htmlFor={`project.${index}.description`}>
-                                  Project Description
-                                </Label>
-                                <Textarea
-                                  placeholder="Enter project description"
-                                  {...form.register(
-                                    `project.${index}.description`
-                                  )}
-                                />
-                                {form.formState.errors.project?.[index]
-                                  ?.description && (
-                                  <span className="text-destructive text-sm font-medium">
-                                    {
-                                      form.formState.errors.project[index]
-                                        ?.description?.message
-                                    }
-                                  </span>
+                    </div>
+                  </div>
+                  <div className="flex justify-end">
+                    <FaPlus
+                      className="rounded-full mb-6 cursor-pointer"
+                      size={16}
+                      onClick={() => append({ name: "", description: "" })}
+                    />
+                  </div>
+                  <div className=" grid gap-6 grid-cols-2">
+                    {fields.map((item, index) => (
+                      <Card key={item.id} className=" bg-muted w-full  h-full">
+                        <CardContent className="grid gap-4 md:grid-cols-1 ">
+                          <div className="">
+                            <div className="my-5">
+                              <Label htmlFor={`project.${index}.name`}>
+                                Project Name
+                              </Label>
+                              <Input
+                                type="text"
+                                placeholder="Enter project name"
+                                {...form.register(`project.${index}.name`)}
+                              />
+                            </div>
+                            <div>
+                              <Label htmlFor={`project.${index}.description`}>
+                                Project Description
+                              </Label>
+                              <Textarea
+                                placeholder="Enter project description"
+                                {...form.register(
+                                  `project.${index}.description`
                                 )}
-                              </div>
+                                className="h-20"
+                              />
+                              {form.formState.errors.project?.[index]
+                                ?.description && (
+                                <span className="text-destructive text-sm font-medium">
+                                  {
+                                    form.formState.errors.project[index]
+                                      ?.description?.message
+                                  }
+                                </span>
+                              )}
                               <div className="flex gap-2 mt-2">
-                                {/* <Button
-                                  type="button"
-                                >
-                                  Update
-                                </Button> */}
-                                <Button
-                                  type="button"
-                                  variant="destructive"
-                                  // onClick={() => remove(index)}
-                                >
+                                <Button type="button" variant="destructive">
                                   {/* <Trash className="w-4 h-4 mr-2" /> Delete */}
                                   Delete
                                 </Button>
                               </div>
-                            </CardContent>
-                          </Card>
-                        ))}
-                        <Button
-                          type="button"
-                          className="w-[30%] btn-orange"
-                          onClick={() => append({ name: "", description: "" })}
-                        >
-                          {/* <Plus className="w-5 h-5 mr-2" /> Add Project */}
-                          Add Project
-                        </Button>
-                      </div>
-                    </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
                   </div>
                   {/* Submit Button */}
                   <div className="w-full flex justify-center mt-12">

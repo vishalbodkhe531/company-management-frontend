@@ -4,14 +4,14 @@ import { Outlet } from "react-router-dom";
 
 function Structure({ children }: { children?: React.ReactNode }) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen font-paraFont">
       {/* Header */}
       <header className="bg-header text-heading shadow-md">
         <Header />
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-grow text-mainHeading ">
+      <main className="flex-grow text-mainHeading  ">
         <div className=" mx-auto w-full h-full select-none">
           {children || <Outlet />}
         </div>
