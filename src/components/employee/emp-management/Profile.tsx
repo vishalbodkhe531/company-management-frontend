@@ -166,7 +166,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-500 p-8 select-none font-paraFont">
+    <div className="min-h-screen p-8 select-none font-paraFont shadow-3xl">
       <motion.div
         className="max-w-full mx-auto "
         initial={{ opacity: 0, y: 50 }}
@@ -175,7 +175,7 @@ const Profile = () => {
       >
         {/* Header Section */}
         <Card className="mb-8">
-          <CardContent className="flex items-center p-6 bg-white rounded-t-xl shadow-xl bottom-2">
+          <CardContent className="flex items-center p-6 bg-gradient-to-r from-blue-700 to-purple-400 rounded-t-xl shadow-xl bottom-2 text-white">
             <Avatar className="w-24 h-24 mr-6">
               <AvatarImage src={employee?.profilePic} alt="Profile Picture" />
               <AvatarFallback>{employee?.firstName}</AvatarFallback>
